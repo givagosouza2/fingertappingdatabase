@@ -1,0 +1,8 @@
+streamlit
+matplotlib.pyplot
+numpy
+pandas
+scipy.spatial
+matplotlib.patches
+
+
