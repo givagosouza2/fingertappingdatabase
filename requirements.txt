@@ -1,8 +1,8 @@
 streamlit
-matplotlib.pyplot
+matplotlib
 numpy
 pandas
-scipy.spatial
-matplotlib.patches
+scipy
+
 
 
