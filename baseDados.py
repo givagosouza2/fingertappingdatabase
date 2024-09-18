@@ -362,7 +362,10 @@ with tab2:
                     x_coordenadas, y_coordenadas)
                 ellipse_area = np.pi * ellipse_semiminor_axis * ellipse_semimajor_axis
                 features_area.append(ellipse_area)
-                total_deviation = np.sum(np.sqrt(x_coordenadas**2+y_coordenadas**2))
+                x_squared = [a**2 for a in x_coordinates]
+                y_squared = [b**2 for b in y_coordinates]
+                total_deviation = np.sum(np.sqrt(x_squared+y_squared))
+                
                 features_deviation.append(total_deviation)
                 
             a = a + 1
