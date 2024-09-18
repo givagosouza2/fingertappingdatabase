@@ -130,6 +130,8 @@ with tab1:
         x = [0, 0, x_resolution, x_resolution, 0]
         y = [0, y_resolution, y_resolution, 0, 0]
 
+        total_deviation = np.sum(np.sqrt(x_dados**2+y_dados**2))
+
         x_fit, y_fit, ellipse_semimajor_axis, ellipse_semiminor_axis, angle = fit_ellipse(
             x_dados, y_dados)
         ellipse_area = np.pi * ellipse_semiminor_axis * ellipse_semimajor_axis
@@ -195,6 +197,9 @@ with tab1:
         ellipse_area_text = [
             'Ellipse area (px^2): ' + str(round(ellipse_area, 4))]
         st.write(ellipse_area_text[0])
+        total_deviation_text = [
+            'Total deviation (px): ' + str(round(total_deviation, 4))]
+        st.write(total_deviation_text[0])
 with tab2:
     todos_participantes = {}
     for indice, linha in base_de_dados.iterrows():
@@ -277,6 +282,7 @@ with tab2:
         features_max = []
         features_min = []
         features_area = []
+        features_deviation = []
         condicao_1_selected = []
         condicao_2_selected = []
         condicao_3_selected = []
@@ -354,6 +360,9 @@ with tab2:
                     x_coordenadas, y_coordenadas)
                 ellipse_area = np.pi * ellipse_semiminor_axis * ellipse_semimajor_axis
                 features_area.append(ellipse_area)
+                total_deviation = np.sum(np.sqrt(x_coordenadas**2+y_coordenadas**2))
+                features_deviation.append(total_deviation)
+                
             a = a + 1
 
         st.write('Number of datasets: ' + str(len(elementos_comuns)))
@@ -417,6 +426,16 @@ with tab2:
         st.write('Area (px^2): ' + str(round(np.mean(dados_filtrados_6), 4)
                                        ) + ' ± ' + str(round(np.std(dados_filtrados_6), 4)))
 
+        media = np.mean(features_deviation)
+        desvio_padrao = np.std(features_deviation)
+        limite_inferior = media - 3 * desvio_padrao
+        limite_superior = media + 3 * desvio_padrao
+        dados_filtrados_7 = [
+            x for x in features_deviation if limite_inferior <= x <= limite_superior]
+        num_outliers_7 = len(features_deviation) - len(dados_filtrados_7)
+        st.write('Total deviation (px): ' + str(round(np.mean(dados_filtrados_7), 4)
+                                       ) + ' ± ' + str(round(np.std(dados_filtrados_7), 4)))
+
         # Convertendo a lista em um DataFrame
   
         df = pd.DataFrame({
@@ -425,8 +444,8 @@ with tab2:
             "Coluna 3": features_std,
             "Coluna 4": features_max,
             "Coluna 5": features_min,
-            "Coluna 5": features_min,
-            
+            "Coluna 6": features_area,
+            "Coluna 7": features_deviation,
         })
 
         # Convertendo o DataFrame para CSV
@@ -434,11 +453,10 @@ with tab2:
 
         # Botão de download para a lista de dados numéricos
         st.download_button(
-            label="Baixar lista de dados como CSV",
+            label="Download filtered data",
             data=csv,
-            file_name='dados_numericos.csv',
-            mime='text/csv',
-)
+            file_name='filtered database.csv',
+            mime='text/csv')
         col5, col6, col7 = st.columns([1, 1, 1])
         with col5:
             fig, ax = plt.subplots()
