@@ -417,6 +417,28 @@ with tab2:
         st.write('Area (px^2): ' + str(round(np.mean(dados_filtrados_6), 4)
                                        ) + ' ± ' + str(round(np.std(dados_filtrados_6), 4)))
 
+        # Convertendo a lista em um DataFrame
+  
+        df = pd.DataFrame({
+            "Coluna 1": features_num_taps,
+            "Coluna 2": features_mean,
+            "Coluna 3": features_std,
+            "Coluna 4": features_max,
+            "Coluna 5": features_min,
+            "Coluna 5": features_min,
+            
+        })
+
+        # Convertendo o DataFrame para CSV
+        csv = df.to_csv(index=False)
+
+        # Botão de download para a lista de dados numéricos
+        st.download_button(
+            label="Baixar lista de dados como CSV",
+            data=csv,
+            file_name='dados_numericos.csv',
+            mime='text/csv',
+)
         col5, col6, col7 = st.columns([1, 1, 1])
         with col5:
             fig, ax = plt.subplots()
