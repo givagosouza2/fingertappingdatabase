@@ -453,13 +453,13 @@ with tab2:
         # Convertendo a lista em um DataFrame
   
         df = pd.DataFrame({
-            "Coluna 1": features_num_taps,
-            "Coluna 2": features_mean,
-            "Coluna 3": features_std,
-            "Coluna 4": features_max,
-            "Coluna 5": features_min,
-            "Coluna 6": features_area,
-            "Coluna 7": features_deviation,
+            "Number of taps": features_num_taps,
+            "Mean interval (ms)": features_mean,
+            "Standard deviation (ms)": features_std,
+            "Maximum interval (ms)": features_max,
+            "Minimum interval": features_min,
+            "Area": features_area,
+            "Deviation": features_deviation,
         })
 
         # Convertendo o DataFrame para CSV
