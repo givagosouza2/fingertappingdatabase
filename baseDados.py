@@ -271,7 +271,7 @@ with tab2:
         condicao_2 = st.selectbox(
             'Select sex condition', ['Both sexes', 'Male', 'Female'])
         condicao_3 = st.selectbox(
-            'Select age condition', ['All ages', 'Young adult (18-60 yo)', 'Old adult (> 60 yo)'])
+            'Select age condition', ['All ages', 'Young adult (18-30 yo)', 'Young adult (31-40 yo)','Young adult (41-50 yo)','Young adult (51-60 yo)','Old adult (> 60 yo)'])
         smartphones_unicos_ordenados.insert(0, 'All devices')
         condicao_4 = st.selectbox(
             'Select smartphone device', smartphones_unicos_ordenados)
@@ -317,11 +317,20 @@ with tab2:
             if condicao_3 == "All ages":
                 indice_3.append(a)
             else:
-                if condicao_3 == 'Young adult (18-60 yo)':
-                    if todos_participantes[participantes]['idade_teste'][0] < 60:
+                if condicao_3 == 'Young adult (18-30 yo)':
+                    if todos_participantes[participantes]['idade_teste'][0] < 31:
                         indice_3.append(a)
+                elif condicao_3 == 'Young adult (31-40 yo)':
+                    if todos_participantes[participantes]['idade_teste'][0] > 30 and todos_participantes[participantes]['idade_teste'][0] < 41:
+                        indice_3.append(a)
+                elif condicao_3 == 'Young adult (41-50 yo)':
+                    if todos_participantes[participantes]['idade_teste'][0] > 40 and todos_participantes[participantes]['idade_teste'][0] < 51:
+                        indice_3.append(a)       
+                elif condicao_3 == 'Young adult (51-60 yo)':
+                    if todos_participantes[participantes]['idade_teste'][0] > 50 and todos_participantes[participantes]['idade_teste'][0] < 61:
+                        indice_3.append(a)        
                 elif condicao_3 == 'Old adult (> 60 yo)':
-                    if todos_participantes[participantes]['idade_teste'][0] >= 60:
+                    if todos_participantes[participantes]['idade_teste'][0] > 60:
                         indice_3.append(a)
                 else:
                     print('0')
