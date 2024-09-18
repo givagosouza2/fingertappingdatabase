@@ -130,7 +130,9 @@ with tab1:
         x = [0, 0, x_resolution, x_resolution, 0]
         y = [0, y_resolution, y_resolution, 0, 0]
 
-        total_deviation = np.sum(np.sqrt(pow(x_dados,2)+pow(y_dados,2)))
+        x_squared = [x**2 for x in x_dados]
+        y_squared = [y**2 for x in y_dados]
+        total_deviation = np.sum(np.sqrt(x_squared+y_squared))
 
         x_fit, y_fit, ellipse_semimajor_axis, ellipse_semiminor_axis, angle = fit_ellipse(
             x_dados, y_dados)
