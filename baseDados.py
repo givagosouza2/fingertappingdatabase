@@ -176,8 +176,8 @@ with tab1:
             ax.plot(x, y, 'k')
             ax.plot(x_dados, y_dados, '+k')
             plt.plot(x_fit, y_fit, 'blue')
-            ax.set_xlim(-3*y_resolution/2, y_resolution)
-            ax.set_ylim(0, 3*y_resolution/2)
+            ax.set_xlim(-y_resolution, y_resolution)
+            ax.set_ylim(0, y_resolution/2)
             ax.set_title('Taps distribution in the screen')
             ax.axis('off')
             st.pyplot(fig)
@@ -522,6 +522,7 @@ with tab2:
             ax.set_title('Ellipse area')
             st.pyplot(fig)
             st.write(f'Number of outliers = {num_outliers_6}')
+
 
 
 
