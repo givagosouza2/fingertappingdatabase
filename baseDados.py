@@ -176,7 +176,7 @@ with tab1:
             ax.plot(x, y, 'k')
             ax.plot(x_dados, y_dados, '+k')
             plt.plot(x_fit, y_fit, 'blue')
-            ax.set_xlim(min(x_dados)-min(x_dados)*0.25, max(x_dados)+max(x_dados)*0.25)
+            ax.set_xlim(min(y_dados)-min(y_dados)*0.25, max(y_dados)+max(y_dados)*0.25)
             ax.set_ylim(min(y_dados)-min(y_dados)*0.25, max(y_dados)+max(y_dados)*0.25)
             
             #ax.set_xlim(-y_resolution, y_resolution)
@@ -525,6 +525,7 @@ with tab2:
             ax.set_title('Ellipse area')
             st.pyplot(fig)
             st.write(f'Number of outliers = {num_outliers_6}')
+
 
 
 
