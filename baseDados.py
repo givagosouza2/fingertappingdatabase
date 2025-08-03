@@ -176,8 +176,11 @@ with tab1:
             ax.plot(x, y, 'k')
             ax.plot(x_dados, y_dados, '+k')
             plt.plot(x_fit, y_fit, 'blue')
-            ax.set_xlim(-y_resolution, y_resolution)
-            ax.set_ylim(0, y_resolution/2)
+            ax.set_xlim(min(x_dados), max(x_dados))
+            ax.set_xlim(min(y_dados), max(y_dados))
+            
+            #ax.set_xlim(-y_resolution, y_resolution)
+            #ax.set_ylim(0, y_resolution/2)
             ax.set_title('Taps distribution in the screen')
             ax.axis('off')
             st.pyplot(fig)
