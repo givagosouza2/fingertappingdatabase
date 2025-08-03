@@ -167,7 +167,7 @@ with tab1:
             ax.plot(t[0:-1], intervals, 'o-',
                     color=[0, 0.8, 1], markeredgecolor=[0, 0, 1])
             ax.set_ylim(np.min(intervals)*0.5, np.max(intervals)*1.5)
-            ax.set_xlabel('Time (s)')
+            ax.set_xlabel('Time (ms)')
             ax.set_ylabel('Interval inter tap (ms)')
             ax.set_title('Interval inter tap as a function of the time')
             st.pyplot(fig)
@@ -522,3 +522,4 @@ with tab2:
             ax.set_title('Ellipse area')
             st.pyplot(fig)
             st.write(f'Number of outliers = {num_outliers_6}')
+
